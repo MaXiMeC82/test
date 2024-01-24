@@ -18,6 +18,7 @@ class Ingredient
     #[ORM\Column]
     private ?int $id = null;
 
+    #[ORM\ManyToOne(targetEntity: Recette::class, inversedBy: "listeIngredients")]
     #[ORM\Column(type: 'string', length: 50)]
     #[Assert\NotBlank()]
     #[Assert\Length(min: 2, max: 50)]
@@ -81,5 +82,10 @@ class Ingredient
         $this->createdAt = $createdAt;
 
         return $this;
+    }
+
+    public function addIngredient()
+    {
+        
     }
 }
